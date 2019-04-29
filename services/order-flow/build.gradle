@@ -1,0 +1,17 @@
+apply from: '../../build.gradle'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+	runtime 'org.apache.ws.xmlschema:xmlschema-core:2.2.4'
+	runtime 'wsdl4j:wsdl4j:1.6.3'
+
+	implementation 'org.springframework.boot:spring-boot-starter-integration'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	compile 'org.springframework.integration:spring-integration-ws:5.1.4.RELEASE'
+	
+	compile project(':order-service-client')
+}
