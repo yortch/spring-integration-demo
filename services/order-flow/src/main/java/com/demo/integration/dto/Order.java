@@ -12,9 +12,4 @@ public class Order {
 
     private String id;
 
-    public com.integration.demo.webservice.client.Order toWebServiceType() {
-        com.integration.demo.webservice.client.Order order = new com.integration.demo.webservice.client.Order();
-        order.setId(this.getId());
-        return order;
-    }
 }

@@ -3,6 +3,7 @@ package com.demo.integration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.ws.SimpleWebServiceInboundGateway;
 import org.springframework.integration.ws.SimpleWebServiceOutboundGateway;
 import org.springframework.messaging.Message;
@@ -20,7 +21,7 @@ public class IntegrationApplication {
 	@Bean
 	SimpleWebServiceInboundGateway inboundGateway() {
 		SimpleWebServiceInboundGateway inboundGateway = new SimpleWebServiceInboundGateway();
-
+		//inboundGateway.setRequestChannel();
 		return inboundGateway;
 
 	}

@@ -16,6 +16,7 @@ buildscript {
 }
 
 apply plugin: 'maven'
+apply plugin: 'idea'
 
 allprojects {
 	repositories {

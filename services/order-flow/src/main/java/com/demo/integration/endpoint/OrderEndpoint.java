@@ -1,9 +1,11 @@
 package com.demo.integration.endpoint;
 
+import com.demo.integration.converter.OrderToWebServiceType;
 import com.demo.integration.dto.Order;
 import com.demo.integration.service.OrderService;
 import com.integration.demo.webservice.client.OrderRequest;
 import com.integration.demo.webservice.client.OrderResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -14,6 +16,9 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 public class OrderEndpoint {
     private final OrderService orderService;
 
+    @Autowired
+    private OrderToWebServiceType orderToWebServiceTypeConverter;
+
     public OrderEndpoint(OrderService orderService) {
         this.orderService = orderService;
     }
@@ -23,7 +28,7 @@ public class OrderEndpoint {
     OrderResponse getOrder(@RequestPayload OrderRequest orderRequest) {
         OrderResponse response = new OrderResponse();
         Order order = orderService.getOrder(orderRequest.getOrder().getId());
-        response.setOrder(order.toWebServiceType());
+        response.setOrder(orderToWebServiceTypeConverter.convert(order));
         return response;
     }
 
