@@ -32,7 +32,7 @@ hs_err_pid*
 classes/
 
 ### Gradle ###
-.gradual
+.gradle
 **/build/
 
 

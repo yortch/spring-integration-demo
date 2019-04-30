@@ -1,6 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://demo/schemas" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://demo/definitions" targetNamespace="http://demo/definitions">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://demo/schemas"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://demo/definitions"
+                  targetNamespace="http://demo/definitions">
   <wsdl:types>
-    <xs:schema xmlns:hr="http://demo/schemas" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://demo/schemas"><xs:complexType name="OrderRequest"><xs:sequence><xs:element name="order" type="hr:Order"/></xs:sequence></xs:complexType><xs:complexType name="OrderResponse"><xs:sequence><xs:element name="order" type="hr:Order"/></xs:sequence></xs:complexType><xs:complexType name="Order"><xs:sequence><xs:element name="id" type="xs:string"/></xs:sequence></xs:complexType><xs:element name="orderRequest" type="hr:OrderRequest"/><xs:element name="orderResponse" type="hr:OrderResponse"/></xs:schema>
+    <xs:schema xmlns:hr="http://demo/schemas" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               attributeFormDefault="unqualified" elementFormDefault="qualified"
+               targetNamespace="http://demo/schemas">
+      <xs:element name="orderRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="order" type="hr:Order"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="orderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="order" type="hr:Order"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Order">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
   </wsdl:types>
   <wsdl:message name="orderRequest">
     <wsdl:part element="sch:orderRequest" name="orderRequest">
@@ -13,9 +38,9 @@
   <wsdl:portType name="OrderPortType">
     <wsdl:operation name="order">
       <wsdl:input message="tns:orderRequest" name="orderRequest">
-    </wsdl:input>
+      </wsdl:input>
       <wsdl:output message="tns:orderResponse" name="orderResponse">
-    </wsdl:output>
+      </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="OrderPortTypeSoap11" type="tns:OrderPortType">
