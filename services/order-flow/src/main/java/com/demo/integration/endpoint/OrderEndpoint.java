@@ -6,13 +6,11 @@ import com.demo.integration.service.OrderService;
 import com.integration.demo.webservice.client.OrderRequest;
 import com.integration.demo.webservice.client.OrderResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ws.server.endpoint.annotation.Endpoint;
-import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
-import org.springframework.ws.server.endpoint.annotation.RequestPayload;
-import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.integration.annotation.ServiceActivator;
 
 
-@Endpoint
+@Configuration
 public class OrderEndpoint {
     private final OrderService orderService;
 
@@ -23,9 +21,8 @@ public class OrderEndpoint {
         this.orderService = orderService;
     }
 
-    @PayloadRoot(localPart = "orderRequest", namespace = "http://demo/schemas")
-    public @ResponsePayload
-    OrderResponse getOrder(@RequestPayload OrderRequest orderRequest) {
+    @ServiceActivator(inputChannel="orderInputChannel")
+    OrderResponse getOrder(OrderRequest orderRequest) {
         OrderResponse response = new OrderResponse();
         Order order = orderService.getOrder(orderRequest.getOrder().getId());
         response.setOrder(orderToWebServiceTypeConverter.convert(order));
