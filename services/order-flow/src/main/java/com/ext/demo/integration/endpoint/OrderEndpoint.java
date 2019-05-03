@@ -1,8 +1,8 @@
-package com.demo.integration.endpoint;
+package com.ext.demo.integration.endpoint;
 
-import com.demo.integration.converter.OrderToWebServiceType;
-import com.demo.integration.dto.Order;
-import com.demo.integration.service.OrderService;
+import com.ext.demo.integration.converter.OrderToWebServiceType;
+import com.ext.demo.integration.dto.Order;
+import com.ext.demo.integration.service.OrderService;
 import com.integration.demo.webservice.client.OrderRequest;
 import com.integration.demo.webservice.client.OrderResponse;
 import org.springframework.beans.factory.annotation.Autowired;

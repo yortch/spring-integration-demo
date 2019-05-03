@@ -1,4 +1,4 @@
-package com.demo.integration;
+package com.ext.demo.integration;
 
 import com.integration.demo.webservice.client.Order;
 import com.integration.demo.webservice.client.OrderRequest;

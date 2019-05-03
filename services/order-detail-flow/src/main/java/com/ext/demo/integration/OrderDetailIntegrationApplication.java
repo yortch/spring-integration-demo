@@ -1,4 +1,4 @@
-package com.demo.integration;
+package com.ext.demo.integration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,12 +11,12 @@ import org.springframework.integration.config.EnableIntegration;
 @SpringBootApplication
 @EnableIntegration
 @IntegrationComponentScan
-public class IntegrationApplication {
+public class OrderDetailIntegrationApplication {
 
-	private static Logger LOG = LoggerFactory.getLogger(IntegrationApplication.class);
+	private static Logger LOG = LoggerFactory.getLogger(OrderDetailIntegrationApplication.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(IntegrationApplication.class, args);
+		SpringApplication.run(OrderDetailIntegrationApplication.class, args);
 	}
 
 

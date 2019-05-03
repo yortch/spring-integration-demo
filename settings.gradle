@@ -4,7 +4,9 @@ include ':order-service-client'
 include ':order-detail-service-client'
 
 include ':order-flow'
+include ':order-detail-flow'
 
 project(':order-detail-service-client').projectDir = "$rootDir/components/order-detail-service-client" as File
 project(':order-service-client').projectDir = "$rootDir/components/order-service-client" as File
 project(':order-flow').projectDir = "$rootDir/services/order-flow" as File
+project(':order-detail-flow').projectDir = "$rootDir/services/order-detail-flow" as File

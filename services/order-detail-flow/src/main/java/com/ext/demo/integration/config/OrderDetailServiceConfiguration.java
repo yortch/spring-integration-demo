@@ -1,6 +1,6 @@
-package com.demo.integration.config;
+package com.ext.demo.integration.config;
 
-import com.integration.demo.webservice.client.OrderRequest;
+import com.integration.ext.demo.webservice.client.OrderDetailRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -20,34 +20,36 @@ import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
 
 @EnableWs
 @Configuration
-public class OrderServiceConfiguration extends WsConfigurerAdapter {
+public class OrderDetailServiceConfiguration extends WsConfigurerAdapter {
 
-    private static Logger LOG = LoggerFactory.getLogger(OrderServiceConfiguration.class);
+    private static Logger LOG = LoggerFactory.getLogger(OrderDetailServiceConfiguration.class);
+
+    public static final String uriPath = "/orderDetailService";
 
     @Bean
     public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
-        return new ServletRegistrationBean(servlet, "/orderService/*");
+        return new ServletRegistrationBean(servlet, uriPath + "/*");
     }
 
     /**
      * TODO: do not like having to include the wsdl, but do not see a way around this,
      * another alternative is to include the xsd only and set the port type programmatically
      */
-    @Bean (name="order")
+    @Bean (name="orderDetail")
     public SimpleWsdl11Definition orderWdlDefinition() {
         SimpleWsdl11Definition definition = new SimpleWsdl11Definition();
-        definition.setWsdl(new ClassPathResource("/schemas/order.wsdl"));
+        definition.setWsdl(new ClassPathResource("/schemas/orderDetail.wsdl"));
 
         return definition;
     }
 
     @Bean
-    Jaxb2Marshaller orderServiceMarshaller() {
+    Jaxb2Marshaller orderDetailServiceMarshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setPackagesToScan(ClassUtils.getPackageName(OrderRequest.class));
+        marshaller.setPackagesToScan(ClassUtils.getPackageName(OrderDetailRequest.class));
         return marshaller;
     }
 
@@ -55,17 +57,17 @@ public class OrderServiceConfiguration extends WsConfigurerAdapter {
      * Message channel used to handle message when the web service gateway is invoked
      */
     @Bean
-    public MessageChannel orderInputChannel() {
+    public MessageChannel orderDetailInputChannel() {
         return new DirectChannel();
     }
 
     @Bean
-    MarshallingWebServiceInboundGateway orderInboundGateway() {
+    MarshallingWebServiceInboundGateway orderDetailInboundGateway() {
         MarshallingWebServiceInboundGateway inboundGateway = new MarshallingWebServiceInboundGateway();
-        Jaxb2Marshaller orderServiceMarshaller = orderServiceMarshaller();
+        Jaxb2Marshaller orderServiceMarshaller = orderDetailServiceMarshaller();
         inboundGateway.setMarshaller(orderServiceMarshaller);
         inboundGateway.setUnmarshaller(orderServiceMarshaller);
-        inboundGateway.setRequestChannel(orderInputChannel());
+        inboundGateway.setRequestChannel(orderDetailInputChannel());
         return inboundGateway;
     }
 }

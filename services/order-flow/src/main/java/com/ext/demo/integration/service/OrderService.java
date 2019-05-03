@@ -1,6 +1,6 @@
-package com.demo.integration.service;
+package com.ext.demo.integration.service;
 
-import com.demo.integration.dto.Order;
+import com.ext.demo.integration.dto.Order;
 
 public interface OrderService {
 

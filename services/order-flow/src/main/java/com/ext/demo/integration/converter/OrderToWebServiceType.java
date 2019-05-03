@@ -1,6 +1,6 @@
-package com.demo.integration.converter;
+package com.ext.demo.integration.converter;
 
-import com.demo.integration.dto.Order;
+import com.ext.demo.integration.dto.Order;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 

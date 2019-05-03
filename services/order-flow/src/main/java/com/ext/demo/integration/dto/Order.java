@@ -1,4 +1,4 @@
-package com.demo.integration.dto;
+package com.ext.demo.integration.dto;
 
 public class Order {
 
