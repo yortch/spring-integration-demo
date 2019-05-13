@@ -1,5 +1,6 @@
 package com.ext.demo.integration.config;
 
+import com.ext.demo.integration.channel.ChannelNames;
 import com.integration.demo.webservice.client.OrderRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,7 +38,7 @@ public class OrderServiceConfiguration extends WsConfigurerAdapter {
      * another alternative is to include the xsd only and set the port type programmatically
      */
     @Bean (name="order")
-    public SimpleWsdl11Definition orderWdlDefinition() {
+    public SimpleWsdl11Definition orderWsdlDefinition() {
         SimpleWsdl11Definition definition = new SimpleWsdl11Definition();
         definition.setWsdl(new ClassPathResource("/schemas/order.wsdl"));
 
@@ -54,7 +55,7 @@ public class OrderServiceConfiguration extends WsConfigurerAdapter {
     /**
      * Message channel used to handle message when the web service gateway is invoked
      */
-    @Bean
+    @Bean (name = ChannelNames.ORDER_INVOCATION)
     public MessageChannel orderInputChannel() {
         return new DirectChannel();
     }

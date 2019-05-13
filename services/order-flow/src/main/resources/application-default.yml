@@ -1,0 +1,2 @@
+order.detail.service:
+      url: http://localhost:8080/orderDetailService
