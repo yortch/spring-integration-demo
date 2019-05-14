@@ -14,10 +14,10 @@ import org.springframework.integration.http.config.EnableIntegrationGraphControl
 
 @SpringBootApplication
 @EnableIntegration
-@EnableIntegrationManagement(statsEnabled = "_org.springframework.integration.errorLogger.handler",
-		countsEnabled = "!*",
-		defaultLoggingEnabled = "true")
-@EnableIntegrationGraphController(path = "/integration")
+//@EnableIntegrationManagement(statsEnabled = "_org.springframework.integration.errorLogger.handler",
+//		countsEnabled = "!*",
+//		defaultLoggingEnabled = "true")
+@EnableIntegrationGraphController(path = "/integration", allowedOrigins="http://localhost:8082")
 @IntegrationComponentScan
 public class IntegrationApplication {
 

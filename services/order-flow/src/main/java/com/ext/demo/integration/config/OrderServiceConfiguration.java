@@ -67,6 +67,7 @@ public class OrderServiceConfiguration extends WsConfigurerAdapter {
         inboundGateway.setMarshaller(orderServiceMarshaller);
         inboundGateway.setUnmarshaller(orderServiceMarshaller);
         inboundGateway.setRequestChannel(orderInputChannel());
+        inboundGateway.setLoggingEnabled(true);
         return inboundGateway;
     }
 }
