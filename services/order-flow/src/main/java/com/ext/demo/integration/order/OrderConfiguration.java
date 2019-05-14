@@ -1,4 +1,4 @@
-package com.ext.demo.integration.config;
+package com.ext.demo.integration.order;
 
 import com.ext.demo.integration.channel.ChannelNames;
 import com.integration.demo.webservice.client.OrderRequest;
@@ -21,9 +21,9 @@ import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
 
 @EnableWs
 @Configuration
-public class OrderServiceConfiguration extends WsConfigurerAdapter {
+public class OrderConfiguration extends WsConfigurerAdapter {
 
-    private static Logger LOG = LoggerFactory.getLogger(OrderServiceConfiguration.class);
+    private static Logger LOG = LoggerFactory.getLogger(OrderConfiguration.class);
 
     @Bean
     public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {

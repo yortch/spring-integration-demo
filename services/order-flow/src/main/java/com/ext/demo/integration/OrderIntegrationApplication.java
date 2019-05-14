@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.config.EnableIntegration;
-import org.springframework.integration.config.EnableIntegrationManagement;
 import org.springframework.integration.graph.IntegrationGraphServer;
 import org.springframework.integration.http.config.EnableIntegrationGraphController;
 
@@ -19,9 +18,9 @@ import org.springframework.integration.http.config.EnableIntegrationGraphControl
 //		defaultLoggingEnabled = "true")
 @EnableIntegrationGraphController(path = "/integration", allowedOrigins="http://localhost:8082")
 @IntegrationComponentScan
-public class IntegrationApplication {
+public class OrderIntegrationApplication {
 
-	private static Logger LOG = LoggerFactory.getLogger(IntegrationApplication.class);
+	private static Logger LOG = LoggerFactory.getLogger(OrderIntegrationApplication.class);
 
 	@Bean
 	public IntegrationGraphServer integrationGraphServer() {
@@ -29,7 +28,7 @@ public class IntegrationApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(IntegrationApplication.class, args);
+		SpringApplication.run(OrderIntegrationApplication.class, args);
 	}
 
 

@@ -1,4 +1,4 @@
-package com.ext.demo.integration.config;
+package com.ext.demo.integration.order;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

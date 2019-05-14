@@ -1,4 +1,4 @@
-package com.ext.demo.integration.config;
+package com.ext.demo.integration.orderdetail;
 
 import com.ext.demo.integration.channel.ChannelNames;
 import com.integration.ext.demo.webservice.client.OrderDetailRequest;
@@ -12,7 +12,7 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.util.ClassUtils;
 
 @Configuration
-public class OrderDetailServiceConfiguration {
+public class OrderDetailConfiguration {
 
     @Value("${order.detail.service.url}")
     private String orderDetailServicerUrl;

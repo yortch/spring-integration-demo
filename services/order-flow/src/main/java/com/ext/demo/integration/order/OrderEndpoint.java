@@ -1,4 +1,4 @@
-package com.ext.demo.integration.endpoint;
+package com.ext.demo.integration.order;
 
 import com.ext.demo.integration.channel.ChannelNames;
 import com.integration.demo.webservice.client.OrderRequest;

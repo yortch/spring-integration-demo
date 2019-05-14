@@ -1,4 +1,4 @@
-package com.ext.demo.integration.handler;
+package com.ext.demo.integration.orderdetail;
 
 import com.ext.demo.integration.channel.ChannelNames;
 import com.integration.ext.demo.webservice.client.OrderDetail;

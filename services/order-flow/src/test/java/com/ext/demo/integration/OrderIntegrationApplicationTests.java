@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class IntegrationApplicationTests {
+public class OrderIntegrationApplicationTests {
 
 	private Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
 
