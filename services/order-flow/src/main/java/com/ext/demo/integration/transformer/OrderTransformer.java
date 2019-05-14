@@ -15,7 +15,7 @@ public class OrderTransformer {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Transformer(inputChannel=ChannelNames.ORDER_RESPONSE_BUILDER)
+    @Transformer(inputChannel=ChannelNames.ORDER_RESPONSE_BUILDER, outputChannel = ChannelNames.ORDER_RESPONSE)
     public OrderResponse buildResponse(Message<OrderDetail> msg) {
         logger.info("Building request for order [{}]", msg.getPayload().getId());
         OrderDetail detail = msg.getPayload();

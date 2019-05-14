@@ -60,6 +60,13 @@ public class OrderServiceConfiguration extends WsConfigurerAdapter {
         return new DirectChannel();
     }
 
+    @Bean (name = ChannelNames.ORDER_RESPONSE)
+    public MessageChannel orderResponseChannel() {
+        return new DirectChannel();
+    }
+
+
+
     @Bean
     MarshallingWebServiceInboundGateway orderInboundGateway() {
         MarshallingWebServiceInboundGateway inboundGateway = new MarshallingWebServiceInboundGateway();
@@ -67,6 +74,7 @@ public class OrderServiceConfiguration extends WsConfigurerAdapter {
         inboundGateway.setMarshaller(orderServiceMarshaller);
         inboundGateway.setUnmarshaller(orderServiceMarshaller);
         inboundGateway.setRequestChannel(orderInputChannel());
+        inboundGateway.setReplyChannel(orderResponseChannel());
         inboundGateway.setLoggingEnabled(true);
         return inboundGateway;
     }
