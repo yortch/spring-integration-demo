@@ -16,6 +16,7 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.util.ClassUtils;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
+import org.springframework.ws.server.endpoint.mapping.UriEndpointMapping;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
 
@@ -65,8 +66,6 @@ public class OrderConfiguration extends WsConfigurerAdapter {
         return new DirectChannel();
     }
 
-
-
     @Bean
     MarshallingWebServiceInboundGateway orderInboundGateway() {
         MarshallingWebServiceInboundGateway inboundGateway = new MarshallingWebServiceInboundGateway();
@@ -77,5 +76,12 @@ public class OrderConfiguration extends WsConfigurerAdapter {
         inboundGateway.setReplyChannel(orderResponseChannel());
         inboundGateway.setLoggingEnabled(true);
         return inboundGateway;
+    }
+
+    @Bean
+    public UriEndpointMapping uriEndpointMapping() {
+        UriEndpointMapping uriEndpointMapping = new UriEndpointMapping();
+        uriEndpointMapping.setDefaultEndpoint(orderInboundGateway());
+        return uriEndpointMapping;
     }
 }
