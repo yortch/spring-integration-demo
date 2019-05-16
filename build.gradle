@@ -1,0 +1,35 @@
+buildscript {
+	ext {
+		baseVersion = '0.0.1-SNAPSHOT'
+		springBootVersion = '2.1.4.RELEASE'
+		springIntegrationVersion = '5.1.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		// Needed for gradle-git-properties plugin
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'maven'
+apply plugin: 'idea'
+
+allprojects {
+	repositories {
+		mavenCentral()
+	}
+
+	apply plugin: 'java'
+	sourceCompatibility = '1.8'
+	group = 'com.demo'
+	version = project.getProperty("version")=='unspecified' ? "${baseVersion}-SNAPSHOT" : project.getProperty("version")
+}
+
+subprojects {
+
+}

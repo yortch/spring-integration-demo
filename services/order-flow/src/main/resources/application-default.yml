@@ -1,0 +1,7 @@
+order.detail.service:
+      url: http://localhost:8081/orderDetailService
+logging:
+  level:
+    org:
+      springframework:
+        integration: DEBUG

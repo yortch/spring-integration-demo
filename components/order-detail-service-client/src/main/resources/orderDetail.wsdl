@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://ext.demo/schemas"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ext.demo/definitions"
+                  targetNamespace="http://ext.demo/definitions">
+    <wsdl:types>
+        <xs:schema xmlns:hr="http://ext.demo/schemas" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   attributeFormDefault="unqualified" elementFormDefault="qualified"
+                   targetNamespace="http://ext.demo/schemas">
+            <xs:element name="orderDetailRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="order" type="hr:Order"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="orderDetailResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="orderDetail" type="hr:OrderDetail"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="Order">
+                <xs:sequence>
+                    <xs:element name="id" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="OrderDetail">
+                <xs:sequence>
+                    <xs:element name="id" type="xs:string"/>
+                    <xs:element name="total" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="orderDetailRequest">
+        <wsdl:part element="sch:orderDetailRequest" name="orderDetailRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderDetailResponse">
+        <wsdl:part element="sch:orderDetailResponse" name="orderDetailResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="OrderDetailPortType">
+        <wsdl:operation name="orderDetail">
+            <wsdl:input message="tns:orderDetailRequest" name="orderDetailRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:orderDetailResponse" name="orderDetailResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="OrderDetailPortTypeSoap11" type="tns:OrderDetailPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="orderDetail">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="orderDetailRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="orderDetailResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="OrderDetailPortTypeService">
+        <wsdl:port binding="tns:OrderDetailPortTypeSoap11" name="OrderDetailPortTypeSoap11">
+            <soap:address location="http://localhost:8080/orderDetailService/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
